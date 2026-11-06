@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E0C0D">
 <title>연극부 살인사건</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,9 +40,11 @@ p{margin:0;max-width:62ch}
 .prose{display:grid;gap:10px}
 .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted)}
 .quote{border-left:2px solid var(--spot);padding:4px 0 4px 14px;font-family:var(--display);font-size:16px;line-height:1.7}
-.title{position:relative;max-width:480px;margin:0 auto;border-radius:14px;overflow:hidden;background:#0b0a08}
-.title img{display:block;width:100%;height:auto}
-.title .tstart{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);width:min(240px,58%);font-size:16px;letter-spacing:.3em;background:rgba(20,16,10,.55);color:#e9d8b4;border:1px solid rgba(233,216,180,.55);box-shadow:0 0 24px rgba(233,190,110,.15);backdrop-filter:blur(2px)}
+.title{position:fixed;inset:0;z-index:5;background:#0b0a08;display:flex;justify-content:center;overflow:hidden}
+.title img{display:block;height:100%;width:100%;object-fit:contain;object-position:center top}
+@media (max-aspect-ratio:3/4){.title img{object-fit:cover}}
+.title .tstart{bottom:calc(9% + env(safe-area-inset-bottom,0px))}
+.title .tstart{position:absolute;left:50%;bottom:calc(9% + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(240px,58%);font-size:16px;letter-spacing:.3em;background:rgba(20,16,10,.55);color:#e9d8b4;border:1px solid rgba(233,216,180,.55);box-shadow:0 0 24px rgba(233,190,110,.15);backdrop-filter:blur(2px)}
 .title .tstart:hover{background:rgba(233,216,180,.12)}
 body.ontitle header{display:none}
 body.ontitle .nb-btn,body.ontitle #steps{visibility:hidden}
@@ -224,6 +232,10 @@ details.fold .fb{padding:0 12px 12px}
 .card.dud{background:var(--raised);color:var(--muted);box-shadow:none;border:1px dashed var(--line)}
 .card.dud .cn{font-size:15px;color:var(--ink)}
 </style>
+<style>html,body{margin:0;min-height:100%;background:#0E0C0D}*,*::before,*::after{box-sizing:border-box}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}</style>
+</head>
+<body>
+
 
 <div class="wrap">
   <header>
@@ -1355,3 +1367,6 @@ $("overlay").onclick=e=>{if(e.target.id==="overlay"){S.nb=false;renderNote();}};
 document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(S.nb){S.nb=false;renderNote();}else if(S.lockOpen){S.lockOpen=null;render();}else if(S.pop){S.pop=false;render();}});
 render();
 </script>
+
+</body>
+</html>
