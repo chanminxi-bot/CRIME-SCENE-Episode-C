@@ -772,7 +772,7 @@ const C=[
  {id:"rm_mail_t",rbFirst:1,to:"taeyoung",rb:{p:"wonjin",t:"이유요? 없어요. 그냥 싫어했어요. 그래서 제가 더 화가 났죠."},nl:1,n:"“태영은 빼자”",t:"진혁: “태영은 빼자. 난 걔 볼 때마다 별로야.” 원진: “안 돼요.”",s:"taeyoung",
   q:"피해자가 김태영 씨를 배제하려 한 이유는 무엇입니까?",ans:{taeyoung:"역시. 이유도 없었네요. 그럴 줄 알았어요.",wonjin:"이유요? 없어요. 그냥 싫어했어요. 그래서 제가 더 화가 났죠."}},
  {id:"rm_final",n:"「관」 최종고 예약 메일",t:"다음 주 월요일 원진에게 예약된 메일. 첨부: 관_최종고.zip (암호 걸림)."},
- {id:"rm_ending",to:"wonjin",why:"이 대본을 받기로 했던 연출 함원진",rb:{p:"jeongmo",t:"저는 몰랐던 일이에요. …알고 나니까, 죽이고 싶은 마음이 들긴 하네요. 이미 죽었지만."},nl:1,n:"「관」 마지막 독백",t:"부원들에게 나눠 준 대본에는 없던 마지막 독백. 끝까지 숨겨 온 주인공의 연인이 여기서 드러난다. 주연 배우와 분장팀 막내. 1주년, 분장실 커튼 뒤의 약속까지. 이름만 바꿨을 뿐, 정모와 성민을 가리키고 있다.",s:"jeongmo",
+ {id:"rm_ending",s2:["sungmin"],to:"wonjin",why:"이 대본을 받기로 했던 연출 함원진",rb:{p:"jeongmo",t:"저는 몰랐던 일이에요. …알고 나니까, 죽이고 싶은 마음이 들긴 하네요. 이미 죽었지만."},nl:1,n:"「관」 마지막 독백",t:"부원들에게 나눠 준 대본에는 없던 마지막 독백. 끝까지 숨겨 온 주인공의 연인이 여기서 드러난다. 주연 배우와 분장팀 막내. 1주년, 분장실 커튼 뒤의 약속까지. 이름만 바꿨을 뿐, 정모와 성민을 가리키고 있다.",s:"jeongmo",
   q:"마지막 독백의 두 인물. 실제 모델이 누구입니까?",ans:{jeongmo:"저는 몰랐던 일이에요. …알고 나니까, 죽이고 싶은 마음이 들긴 하네요. 이미 죽었지만.",sungmin:"…",wonjin:"이건…."}},
  {id:"rm_notebook",to:"wonjin",why:"피해자를 가장 잘 아는 함원진",rb:{p:"serim",t:"저요? S는 맞지만, 저희는 그런 사이 아니에요. 그건 분명히 말할게요."},nl:1,n:"취재 노트",t:"용의자 9명을 포함한 주변인들의 약점이 적혀 있다. 한 항목만 암호처럼: “J와 S. 커튼콜은 둘이서.”",
   q:"‘J와 S’. 누구를 말하는 것입니까?",ans:{jeongmo:"J와 S요? 음, 진혁이랑 세림 선배일 수도 있잖아요.",serim:"저요? S는 맞지만, 저희는 그런 사이 아니에요.",sungmin:"몰라요.",wonjin:"짐작 가는 사람은 있어요. 근데 이건 장난으로 말할 게 아니라서요. 말 안 할게요."}},
@@ -1069,10 +1069,10 @@ function tagsOf(c){
   (c.a||[]).forEach(([p,k])=>t.push("알리바이 · "+PM[p].name+(k==="ok"?" 확인":" 반박")));
   return t;
 }
-const SURE=new Set(["st_nail","dn_cast2", "rm_mail_t", "so_scrawl", "dn_poster", "rm_mail_a", "rm_mail_h", "cl_draft", "rm_mail_s", "st_serim", "rm_lease", "rm_loan", "rm_plan", "rm_search", "rm_dm", "mk_texts", "st_photos", "so_note", "rm_ending"]);
+const SURE=new Set(["st_nail","rm_fridge","dn_cast2", "rm_mail_t", "so_scrawl", "dn_poster", "rm_mail_a", "rm_mail_h", "cl_draft", "rm_mail_s", "st_serim", "rm_lease", "rm_loan", "rm_plan", "rm_search", "rm_dm", "mk_texts", "st_photos", "so_note", "rm_ending"]);
 const KEYU=new Set(["up_hand","up_band"]);
 const lvOf=c=>SURE.has(c.id)?"sure":KEYU.has(c.id)?(S.attr[c.id]?"sure2":"ambU"):(c.s||c.u)?"amb":null;
-const LVN={sure:["확실","충분히 살인 동기가 될 수 있다.","sure"],sure2:["확실","주인이 밝혀져 확실한 증거로 채택됐다.","sure"],ambU:["애매","주인만 찾을 수 있다면 확실한 증거로 채택될 수 있다.","amb"],amb:["애매","사건 증거로 채택되기엔 애매한 증거다.","amb"]};
+const LVN={sure:["확실","충분히 살해 동기가 될 수 있다.","sure"],sure2:["확실","주인이 밝혀져 확실한 증거로 채택됐다.","sure"],ambU:["애매","주인만 찾을 수 있다면 확실한 증거로 채택될 수 있다.","amb"],amb:["애매","사건 증거로 채택되기엔 애매한 증거다.","amb"]};
 const LVX={st_nail:"범인의 몸에 남은 흔적이다. 주인만 찾으면 범인을 특정할 수 있다."};
 const lvStamp=c=>{const l=lvOf(c);return l?` <span class="stamp lv-${LVN[l][2]}">${LVN[l][0]}</span>`:""};
 const lvNote=c=>{const l=lvOf(c);return l?`<p class="lvnote lv-${LVN[l][2]}">${LVX[c.id]||LVN[l][1]}</p>`:""};
